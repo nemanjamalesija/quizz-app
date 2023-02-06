@@ -1,17 +1,17 @@
 import React from 'react';
 
 export type quizScoreTrackerProps = {
-  currentQuestion: number;
+  currentQuestionIndex: number;
   correctAnswers: number;
 };
 
 const SoreTracker = (props: quizScoreTrackerProps) => {
-  const { currentQuestion, correctAnswers } = props;
+  const { currentQuestionIndex, correctAnswers } = props;
 
   return (
     <div className="score-tracker">
-      <p className="current-question">{currentQuestion}</p>
       <p className="correct_answers">{correctAnswers}</p>
+      <p className="current-question">{currentQuestionIndex}</p>
     </div>
   );
 };

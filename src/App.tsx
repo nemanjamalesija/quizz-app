@@ -20,8 +20,6 @@ function App() {
     );
   };
 
-  console.log(quiz);
-
   const storeInputsValue = (e: inputsHandlerEvents) => {
     const name = e.target.name;
     const value = e.target.value;
