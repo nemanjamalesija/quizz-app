@@ -6,6 +6,11 @@ type quizState = {
   category: string;
   difficulty: string;
   type: string;
+  questions: {
+    question: string;
+    incorrect_answers: [string, string, string];
+    correct_answer: string;
+  }[];
 };
 
 type quizCategories = {
@@ -21,6 +26,13 @@ const initialState: quizState = {
   category: 'sports',
   difficulty: 'easy',
   type: 'multiple',
+  questions: [
+    {
+      question: '',
+      incorrect_answers: ['', '', ''],
+      correct_answer: ',',
+    },
+  ],
 };
 
 const categories: quizCategories = {
@@ -52,51 +64,76 @@ function App() {
     });
   };
 
+  const submitHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setWaiting(false);
+    setLoading(true);
+    fetchQuestions().then((response) => {
+      setQuiz((prev) => {
+        return { ...prev, questions: response.data.results };
+      });
+      setLoading(false);
+    });
+  };
+
+  if (loading) return <h1>Loading...</h1>;
+
   return (
     <div className="App">
-      <form className="setup-form">
-        <div className="form-section">
-          <label htmlFor="amount" className="label labe-amount">
-            Number of questions
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="20"
-            name="amount"
-            value={quiz.amount}
-            onChange={(e) => storeInputsValue}
-          />
-        </div>
-        <div className="form-section">
-          <label htmlFor="category">category</label>
-          <select
-            name="category"
-            className="label label-category"
-            value={quiz.category}
-            onChange={(e) => storeInputsValue}
+      {waiting && (
+        <form className="setup-form">
+          <div className="form-section">
+            <label htmlFor="amount" className="label labe-amount">
+              Number of questions
+            </label>
+            <input
+              type="number"
+              min="1"
+              max="20"
+              name="amount"
+              value={quiz.amount}
+              onChange={storeInputsValue}
+            />
+          </div>
+          <div className="form-section">
+            <label htmlFor="category">category</label>
+            <select
+              name="category"
+              className="label label-category"
+              value={quiz.category}
+              onChange={storeInputsValue}
+            >
+              <option value="sports">sports</option>
+              <option value="geography">geography </option>
+              <option value="mythology">mythology </option>
+              <option value="art">art</option>
+            </select>
+          </div>
+          <div className="form-section">
+            <label htmlFor="difficulty" className="label label-difficulty">
+              Difficulty
+            </label>
+            <select
+              name="difficulty"
+              value={quiz.difficulty}
+              onChange={storeInputsValue}
+            >
+              <option value="easy">easy</option>
+              <option value="medium">medium</option>
+              <option value="hard">hard</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="btn btn-submit"
+            onClick={submitHandler}
           >
-            <option value="sports">sports</option>
-            <option value="geography">geography </option>
-            <option value="mythology">mythology </option>
-            <option value="art">art</option>
-          </select>
-        </div>
-        <div className="form-section">
-          <label htmlFor="difficulty" className="label label-difficulty">
-            Difficulty
-          </label>
-          <select
-            name="difficulty"
-            value={quiz.difficulty}
-            onChange={(e) => storeInputsValue}
-          >
-            <option value="easy">easy</option>
-            <option value="medium">medium</option>
-            <option value="hard">hard</option>
-          </select>
-        </div>
-      </form>
+            Start playing!
+          </button>
+        </form>
+      )}
     </div>
   );
 }
