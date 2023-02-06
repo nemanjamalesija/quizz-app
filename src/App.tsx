@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Form from './components/Form';
 import Loading from './components/Loading';
-import { inputsHandlerProps } from './types/types';
+import Quiz from './components/Quiz';
+import { inputsHandlerEvents } from './types/types';
 import { initialState } from './constants/initialState';
 import { categories } from './constants/categories';
 import axios from 'axios';
@@ -19,7 +20,9 @@ function App() {
     );
   };
 
-  const storeInputsValue = (e: inputsHandlerProps) => {
+  console.log(quiz);
+
+  const storeInputsValue = (e: inputsHandlerEvents) => {
     const name = e.target.name;
     const value = e.target.value;
 
@@ -55,6 +58,7 @@ function App() {
           difficulty={quiz.difficulty}
         />
       )}
+      {!waiting && <Quiz questions={quiz.questions} />}
     </div>
   );
 }

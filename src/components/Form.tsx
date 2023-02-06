@@ -1,8 +1,8 @@
 import React from 'react';
-import { inputsHandlerProps } from '../types/types';
+import { inputsHandlerEvents } from '../types/types';
 
 type formProps = {
-  storeInputsValue: (e: inputsHandlerProps) => void;
+  storeInputsValue: (e: inputsHandlerEvents) => void;
   submitHandler: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   amount: number;
   category: string;

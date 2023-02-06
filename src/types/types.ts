@@ -14,6 +14,6 @@ export type quizCategories = {
   [key: string]: string;
 };
 
-export type inputsHandlerProps =
+export type inputsHandlerEvents =
   | React.ChangeEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLSelectElement>;
