@@ -5,6 +5,7 @@ import CurrentQuestion from './CurrentQuestion';
 import GameOverModal from './GameOverModal';
 import NextQuestion from './NextQuestion';
 import ScoreTracker from './ScoreTracker';
+import Overlay from './Overlay';
 
 export type quizQuestionsProps = {
   questions: quizState['questions'];
@@ -66,6 +67,7 @@ const Questions = (props: quizQuestionsProps) => {
         />
       )}
       <NextQuestion nextQuestionHandler={nextQuestionHandler} />
+      {gameOverModal && <Overlay />}
     </main>
   );
 };
