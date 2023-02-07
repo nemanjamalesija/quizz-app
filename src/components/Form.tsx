@@ -14,52 +14,50 @@ const Form = (props: formProps) => {
     props;
 
   return (
-    <form className="setup-form">
-      <div className="form-section">
-        <label htmlFor="amount" className="label labe-amount">
-          Number of questions
-        </label>
-        <input
-          type="number"
-          min="1"
-          max="20"
-          name="amount"
-          value={amount}
-          onChange={storeInputsValue}
-        />
-      </div>
-      <div className="form-section">
-        <label htmlFor="category">category</label>
-        <select
-          name="category"
-          className="label label-category"
-          value={category}
-          onChange={storeInputsValue}
+    <div className="form-container">
+      <h1 className="heading-primary">Setup Quiz</h1>
+      <form className="setup-form">
+        <div className="form-section">
+          <label htmlFor="amount">Number of questions</label>
+          <input
+            type="number"
+            min="1"
+            max="20"
+            name="amount"
+            value={amount}
+            onChange={storeInputsValue}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="category">category</label>
+          <select name="category" value={category} onChange={storeInputsValue}>
+            <option value="sports">sports</option>
+            <option value="geography">geography </option>
+            <option value="mythology">mythology </option>
+            <option value="art">art</option>
+          </select>
+        </div>
+        <div className="form-section">
+          <label htmlFor="difficulty">Difficulty</label>
+          <select
+            name="difficulty"
+            value={difficulty}
+            onChange={storeInputsValue}
+          >
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          className="btn btn-submit"
+          onClick={submitHandler}
         >
-          <option value="sports">sports</option>
-          <option value="geography">geography </option>
-          <option value="mythology">mythology </option>
-          <option value="art">art</option>
-        </select>
-      </div>
-      <div className="form-section">
-        <label htmlFor="difficulty" className="label label-difficulty">
-          Difficulty
-        </label>
-        <select
-          name="difficulty"
-          value={difficulty}
-          onChange={storeInputsValue}
-        >
-          <option value="easy">easy</option>
-          <option value="medium">medium</option>
-          <option value="hard">hard</option>
-        </select>
-      </div>
-      <button type="submit" className="btn btn-submit" onClick={submitHandler}>
-        Start playing!
-      </button>
-    </form>
+          Start playing!
+        </button>
+      </form>
+    </div>
   );
 };
 
