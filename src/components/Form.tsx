@@ -15,7 +15,7 @@ const Form = (props: formProps) => {
 
   return (
     <div className="form-container">
-      <h1 className="heading-primary">Setup Quiz</h1>
+      <h1 className="heading-primary">Quiz setup</h1>
       <form className="setup-form">
         <div className="form-section">
           <label htmlFor="amount">Number of questions</label>

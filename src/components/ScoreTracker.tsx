@@ -6,8 +6,10 @@ const SoreTracker = (props: quizScoreTrackerProps) => {
 
   return (
     <div className="score-tracker">
-      <p className="correct_answers">{correctAnswers}</p>
-      <p className="current-question">{currentQuestionIndex}</p>
+      <h3 className="heading-tertiary">Correct answers:</h3>
+      <p className="score">
+        {correctAnswers} / {currentQuestionIndex}
+      </p>
     </div>
   );
 };
