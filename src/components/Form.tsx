@@ -29,7 +29,7 @@ const Form = (props: formProps) => {
           />
         </div>
         <div className="form-section">
-          <label htmlFor="category">category</label>
+          <label htmlFor="category">Category</label>
           <select name="category" value={category} onChange={storeInputsValue}>
             <option value="sports">sports</option>
             <option value="geography">geography </option>
