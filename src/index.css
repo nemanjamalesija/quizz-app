@@ -16,7 +16,7 @@ html {
 .loading {
   text-align: center;
   margin-top: 20rem;
-  font-size: 5.2rem;
+  font-size: 4.2rem;
 }
 
 /* form */
@@ -29,7 +29,7 @@ html {
   background-color: #fff;
   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   transition: transform 0.3s ease 0s;
-  margin: 20rem auto 0;
+  margin: 12rem auto 0;
 }
 
 .heading-primary {
