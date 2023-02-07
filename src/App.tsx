@@ -43,6 +43,11 @@ function App() {
     });
   };
 
+  const resetQuizHandler = () => {
+    setQuiz(initialState);
+    setWaiting(true);
+  };
+
   if (loading) return <Loading />;
 
   return (
@@ -56,7 +61,9 @@ function App() {
           difficulty={quiz.difficulty}
         />
       )}
-      {!waiting && <Quiz questions={quiz.questions} />}
+      {!waiting && (
+        <Quiz questions={quiz.questions} resetQuizHandler={resetQuizHandler} />
+      )}
     </div>
   );
 }

@@ -9,10 +9,11 @@ import Overlay from './Overlay';
 
 export type quizQuestionsProps = {
   questions: quizState['questions'];
+  resetQuizHandler(): void;
 };
 
 const Questions = (props: quizQuestionsProps) => {
-  const { questions } = props;
+  const { questions, resetQuizHandler } = props;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [gameOverModal, setGameOverModal] = useState(false);
@@ -64,6 +65,7 @@ const Questions = (props: quizQuestionsProps) => {
         <GameOverModal
           currentQuestionIndex={currentQuestionIndex}
           correctAnswers={correctAnswers}
+          resetQuizHandler={resetQuizHandler}
         />
       )}
       <NextQuestion nextQuestionHandler={nextQuestionHandler} />

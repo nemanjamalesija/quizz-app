@@ -1,8 +1,12 @@
 import React from 'react';
 import { quizScoreTrackerProps } from '../types/types';
 
-const GameOverModal = (props: quizScoreTrackerProps) => {
-  const { correctAnswers, currentQuestionIndex } = props;
+type gameOverModalProps = quizScoreTrackerProps & {
+  resetQuizHandler(): void;
+};
+
+const GameOverModal = (props: gameOverModalProps) => {
+  const { correctAnswers, currentQuestionIndex, resetQuizHandler } = props;
 
   const corectAnsweredPercentage = Math.round(
     (correctAnswers / (currentQuestionIndex + 1)) * 100
@@ -18,7 +22,9 @@ const GameOverModal = (props: quizScoreTrackerProps) => {
         </span>{' '}
         or <span>{corectAnsweredPercentage}% </span>questions correctly
       </p>
-      <button className="btn btn-play-again">Play again?</button>
+      <button className="btn btn-play-again" onClick={resetQuizHandler}>
+        Play again?
+      </button>
     </div>
   );
 };
