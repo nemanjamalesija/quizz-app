@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from './components/Form';
 import Loading from './components/Loading';
 import Quiz from './components/Quiz';
+import Footer from './components/Footer';
 import { inputsHandlerEvents } from './types/types';
 import { initialState } from './constants/initialState';
 import { categories } from './constants/categories';
@@ -64,6 +65,7 @@ function App() {
       {!waiting && (
         <Quiz questions={quiz.questions} resetQuizHandler={resetQuizHandler} />
       )}
+      <Footer />
     </div>
   );
 }
