@@ -16,7 +16,10 @@ const Questions = (props: quizQuestionsProps) => {
   const [gameOverModal, setGameOverModal] = useState(false);
   const { incorrect_answers, correct_answer } = questions[currentQuestionIndex];
 
-  const asnwersTemp = [...incorrect_answers, correct_answer];
+  // add and randomize correct answer
+  let asnwersCombined = [...incorrect_answers];
+  const randomIndex = Math.floor(Math.random() * 4) + 1;
+  asnwersCombined.splice(randomIndex, 0, correct_answer);
 
   const checkAnswerHandler = (answer: string) => {
     if (currentQuestionIndex + 1 >= questions.length) {
@@ -43,7 +46,7 @@ const Questions = (props: quizQuestionsProps) => {
       <CurrentQuestion
         currentQuestionIndex={questions[currentQuestionIndex].question}
       />
-      {asnwersTemp.map((answer, i) => {
+      {asnwersCombined.map((answer, i) => {
         return (
           <AnswerOption
             key={i}
