@@ -1,4 +1,3 @@
-import React from 'react';
 import { quizScoreTrackerProps } from '../types/types';
 
 const SoreTracker = (props: quizScoreTrackerProps) => {

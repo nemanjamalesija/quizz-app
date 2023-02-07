@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type quizAnswerProps = {
   answer: string;
   checkAnswerHandler(answer: string): void;

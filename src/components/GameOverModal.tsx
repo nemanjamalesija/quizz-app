@@ -1,4 +1,3 @@
-import React from 'react';
 import { quizScoreTrackerProps } from '../types/types';
 
 type gameOverModalProps = quizScoreTrackerProps & {

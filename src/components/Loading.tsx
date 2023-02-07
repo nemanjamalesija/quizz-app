@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Loading = () => {
   return <h1 className="heading-primary loading">Loading...</h1>;
 };
