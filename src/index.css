@@ -86,7 +86,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: end;
-  padding: 1rem;
+  padding: 3rem 3rem 0 3rem;
   margin-bottom: 2rem;
 }
 
@@ -133,4 +133,16 @@ html {
 
 .single-question:hover {
   background-color: #087f5b;
+}
+
+/* next question*/
+
+.next-question-div {
+  display: flex;
+  justify-content: end;
+  padding: 0 3rem 3rem;
+}
+
+.btn-next-question {
+  width: 30%;
 }

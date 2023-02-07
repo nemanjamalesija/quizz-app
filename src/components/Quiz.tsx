@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { quizState } from '../types/types';
 import Answers from './Answers';
 import CurrentQuestion from './CurrentQuestion';
 import GameOverModal from './GameOverModal';
+import NextQuestion from './NextQuestion';
 import ScoreTracker from './ScoreTracker';
 
 export type quizQuestionsProps = {
@@ -56,6 +57,7 @@ const Questions = (props: quizQuestionsProps) => {
           correctAnswers={correctAnswers}
         />
       )}
+      <NextQuestion />
     </main>
   );
 };
