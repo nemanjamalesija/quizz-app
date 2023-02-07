@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { quizState } from '../types/types';
-import AnswerOption from './AnswerOption';
+import Answers from './Answers';
 import CurrentQuestion from './CurrentQuestion';
 import GameOverModal from './GameOverModal';
 import ScoreTracker from './ScoreTracker';
@@ -17,9 +17,9 @@ const Questions = (props: quizQuestionsProps) => {
   const { incorrect_answers, correct_answer } = questions[currentQuestionIndex];
 
   // add and randomize correct answer
-  let asnwersCombined = [...incorrect_answers];
+  let answersCombined = [...incorrect_answers];
   const randomIndex = Math.floor(Math.random() * 4) + 1;
-  asnwersCombined.splice(randomIndex, 0, correct_answer);
+  answersCombined.splice(randomIndex, 0, correct_answer);
 
   const checkAnswerHandler = (answer: string) => {
     if (currentQuestionIndex + 1 >= questions.length) {
@@ -46,15 +46,10 @@ const Questions = (props: quizQuestionsProps) => {
       <CurrentQuestion
         currentQuestionIndex={questions[currentQuestionIndex].question}
       />
-      {asnwersCombined.map((answer, i) => {
-        return (
-          <AnswerOption
-            key={i}
-            answer={answer}
-            checkAnswerHandler={checkAnswerHandler}
-          />
-        );
-      })}
+      <Answers
+        answersCombined={answersCombined}
+        checkAnswerHandler={checkAnswerHandler}
+      />
       {gameOverModal && (
         <GameOverModal
           currentQuestionIndex={currentQuestionIndex}
