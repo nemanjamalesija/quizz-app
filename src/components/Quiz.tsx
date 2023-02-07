@@ -12,7 +12,7 @@ export type quizQuestionsProps = {
 
 const Questions = (props: quizQuestionsProps) => {
   const { questions } = props;
-  const [currentQuestionIndex, setCurrentQuestion] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [gameOverModal, setGameOverModal] = useState(false);
   const { incorrect_answers, correct_answer } = questions[currentQuestionIndex];
@@ -23,7 +23,7 @@ const Questions = (props: quizQuestionsProps) => {
   answersCombined.splice(randomIndex, 0, correct_answer);
 
   const checkAnswerHandler = (answer: string) => {
-    if (currentQuestionIndex + 1 >= questions.length) {
+    if (currentQuestionIndex >= questions.length - 1) {
       if (answer === questions[currentQuestionIndex].correct_answer)
         setCorrectAnswers((prev) => prev + 1);
       setGameOverModal(true);
@@ -32,10 +32,18 @@ const Questions = (props: quizQuestionsProps) => {
 
     if (answer === questions[currentQuestionIndex].correct_answer) {
       setCorrectAnswers((prev) => prev + 1);
-      setCurrentQuestion((prev) => prev + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
     } else {
-      setCurrentQuestion((prev) => prev + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
     }
+  };
+
+  const nextQuestionHandler = () => {
+    let newCurrentQuestionIndex = currentQuestionIndex;
+    if (newCurrentQuestionIndex >= questions.length - 1) {
+      setGameOverModal(true);
+      return;
+    } else setCurrentQuestionIndex((prev) => prev + 1);
   };
 
   return (
@@ -57,7 +65,7 @@ const Questions = (props: quizQuestionsProps) => {
           correctAnswers={correctAnswers}
         />
       )}
-      <NextQuestion />
+      <NextQuestion nextQuestionHandler={nextQuestionHandler} />
     </main>
   );
 };
