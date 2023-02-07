@@ -17,3 +17,8 @@ export type quizCategories = {
 export type inputsHandlerEvents =
   | React.ChangeEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLSelectElement>;
+
+export type quizScoreTrackerProps = {
+  currentQuestionIndex: number;
+  correctAnswers: number;
+};

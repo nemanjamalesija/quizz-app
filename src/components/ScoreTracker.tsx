@@ -1,9 +1,5 @@
 import React from 'react';
-
-export type quizScoreTrackerProps = {
-  currentQuestionIndex: number;
-  correctAnswers: number;
-};
+import { quizScoreTrackerProps } from '../types/types';
 
 const SoreTracker = (props: quizScoreTrackerProps) => {
   const { currentQuestionIndex, correctAnswers } = props;
